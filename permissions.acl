@@ -1,0 +1,23 @@
+rule AllAccess {
+  description: "AllAccess - grant everything to everybody"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}
+
+rule All {
+  description: "AllAccess - grant everything to everybody"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.acme.model.Patient"
+  action: ALLOW
+}
+
+rule AllvITAL {
+  description: "AllAccess - grant everything to everybody"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.acme.model.Body_Vitals"
+  action: ALLOW
+}
