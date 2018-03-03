@@ -1,0 +1,16 @@
+#include <PinChangeInt.h>
+#include <eHealth.h>
+
+
+
+void setup() {
+  Serial.begin(115200);  
+}
+void loop() {
+  float temperature = eHealth.getTemperature();
+  Serial.print("Temperature (ºC): ");       
+  Serial.print(temperature, 2);  
+  Serial.println(""); 
+
+  delay(1000);	
+}
