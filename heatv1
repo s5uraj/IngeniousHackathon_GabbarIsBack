@@ -1,16 +1,52 @@
 #include <PinChangeInt.h>
 #include <eHealth.h>
 
-
+String readString;
 
 void setup() {
   Serial.begin(115200);  
 }
+
 void loop() {
-  float temperature = eHealth.getTemperature();
-  Serial.print("Temperature (ºC): ");       
-  Serial.print(temperature, 2);  
-  Serial.println(""); 
+  
+  while (Serial.available())
+  {
+    if (Serial.available() >0)
+    {
+      readString = "";
+      char c = Serial.read();  //gets one byte from serial buffer
+      readString += c; //makes the string readString
+      Serial.flush();     
+    } 
+   
+  }
+ 
+      
+        get_temp();
+      
+   if(readString == "2")
+      {
+        get_emg();
+      }
 
   delay(1000);	
 }
+//get body temperature average of 10
+void get_temp()
+{
+  Serial.flush();
+  float temperature = eHealth.getTemperature();
+  Serial.println(temperature);
+  Serial.flush();
+  
+}
+void get_emg()
+{
+  Serial.flush();
+  int EMG = eHealth.getEMG();
+  Serial.println(EMG);  
+  Serial.flush();
+}
+
+
+
