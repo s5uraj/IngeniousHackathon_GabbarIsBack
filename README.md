@@ -14,3 +14,5 @@ commit 5 => Added Pulseoximeter , configure hyperledger to work with localhost, 
 commit 6 = > Connection with hyperledger succesfull
 
 commit 7 => Created Acees Cntrol list for HyperLegder (Permission) 
+
+commit 8 => Created a simple code for adding a new block which will help to add data into the blockchain
