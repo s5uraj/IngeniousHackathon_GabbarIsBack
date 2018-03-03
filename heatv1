@@ -4,7 +4,12 @@
 String readString;
 
 void setup() {
+  
   Serial.begin(115200);  
+  
+   eHealth.initPulsioximeter();
+  PCintPort::attachInterrupt(6, readPulsioximeter, RISING);
+  
 }
 
 void loop() {
@@ -20,14 +25,20 @@ void loop() {
     } 
    
   }
- 
+ if (readString == "1")
+ {
       
         get_temp();
-      
+ }    
    if(readString == "2")
       {
         get_emg();
       }
+if(readString == "3")
+{
+  
+ get_bpm(); 
+}
 
   delay(1000);	
 }
@@ -47,6 +58,20 @@ void get_emg()
   Serial.println(EMG);  
   Serial.flush();
 }
+void get_bpm()
+{
+  Serial.print(eHealth.getBPM());
+  
+}
 
+void readPulsioximeter(){  
+
+  cont ++;
+
+  if (cont == 50) { //Get only of one 50 measures to reduce the latency
+    eHealth.readPulsioximeter();  
+    cont = 0;
+  }
+}
 
 
