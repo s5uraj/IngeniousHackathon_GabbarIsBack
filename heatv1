@@ -7,12 +7,10 @@ void setup() {
   
   Serial.begin(115200);  
   
-   eHealth.initPulsioximeter();
-  PCintPort::attachInterrupt(6, readPulsioximeter, RISING);
-  
 }
 
 void loop() {
+  
   
   while (Serial.available())
   {
@@ -25,53 +23,78 @@ void loop() {
     } 
    
   }
- if (readString == "1")
- {
-      
-        get_temp();
- }    
-   if(readString == "2")
-      {
-        get_emg();
-      }
-if(readString == "3")
-{
   
- get_bpm(); 
-}
-
-  delay(1000);	
+  if(readString == "1")
+  {
+  Serial.println("----Body Vitals-----");
+  Serial.println(""); 
+  get_temp();
+  Serial.flush();
+  Serial.println("");
+  get_ecg();
+  Serial.flush();
+  Serial.println("");
+  get_emg();
+  Serial.flush();
+  Serial.println("");
+  get_gsr();
+  Serial.flush();
+  Serial.println("----End Vitals-----");
+  Serial.println("");
+  }
+  //get_airflow();
+ // Serial.flush();
+  delay(5000);	
 }
 //get body temperature average of 10
 void get_temp()
 {
-  Serial.flush();
   float temperature = eHealth.getTemperature();
-  Serial.println(temperature);
-  Serial.flush();
-  
+  Serial.print("Temperature                  : "); 
+  Serial.print(temperature);  
+}
+
+void get_ecg()
+{
+  float ECG = eHealth.getECG();
+  Serial.print("ECG                          : "); 
+  Serial.print(ECG, 2); 
 }
 void get_emg()
 {
-  Serial.flush();
   int EMG = eHealth.getEMG();
-  Serial.println(EMG);  
-  Serial.flush();
+  
+ Serial.print("EMG                           : "); 
+ Serial.print(EMG);  
 }
-void get_bpm()
+void get_gsr()
 {
-  Serial.print(eHealth.getBPM());
+  
+ float conductance = eHealth.getSkinConductance();
+ float resistance = eHealth.getSkinResistance();
+ float conductanceVol = eHealth.getSkinConductanceVoltage();
+ 
+ Serial.print("Conductance                   : ");       
+ Serial.print(conductance, 2);  
+ Serial.println("");         
+
+ Serial.print("Resistance                    : ");       
+ Serial.print(resistance, 2);  
+ Serial.println("");    
+
+ Serial.print("Conductance Voltage           : ");       
+ Serial.print(conductanceVol, 4);  
+ Serial.println("");
+
+}
+
+void get_ariflow()
+{
+  int air = eHealth.getAirFlow();   
+  eHealth.airFlowWave(air);
   
 }
 
-void readPulsioximeter(){  
 
-  cont ++;
-
-  if (cont == 50) { //Get only of one 50 measures to reduce the latency
-    eHealth.readPulsioximeter();  
-    cont = 0;
-  }
-}
 
 
