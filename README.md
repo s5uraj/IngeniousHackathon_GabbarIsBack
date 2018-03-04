@@ -20,3 +20,5 @@ commit 8 => Created a simple code for adding a new block which will help to add 
 commit 9 => Added New Patient Module which will help in adding test and thier result with timestamp.
 
 commit 10 => Created a script file to process transaction
+
+commit 11 => Taking body vitals as inputs and analyzing the data
