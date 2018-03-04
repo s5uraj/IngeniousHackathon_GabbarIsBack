@@ -6,6 +6,13 @@ String readString;
 void setup() {
   
   Serial.begin(115200);  
+  Serial.println("Menu :");
+  Serial.println("1) Analyze Body Temperature ");
+  Serial.println("2) Get ECG graph ");
+  Serial.println("3) Get EMG graph ");
+  Serial.println("4) Get GSR graph ");
+  Serial.println("5) Get AirFlow ");
+  Serial.println("6) Exit ");
   
 }
 
@@ -26,25 +33,47 @@ void loop() {
   
   if(readString == "1")
   {
-  Serial.println("----Body Vitals-----");
   Serial.println(""); 
   get_temp();
   Serial.flush();
-  Serial.println("");
-  get_ecg();
-  Serial.flush();
-  Serial.println("");
-  get_emg();
-  Serial.flush();
-  Serial.println("");
-  get_gsr();
-  Serial.flush();
-  Serial.println("----End Vitals-----");
-  Serial.println("");
+  
+  
+  delay(3000);	
   }
-  //get_airflow();
- // Serial.flush();
-  delay(5000);	
+  if(readString == "2")
+  {
+  Serial.println(""); 
+  get_ecg();
+  delay(3000);	
+  Serial.flush();
+  }
+  if(readString == "3")
+  {
+  Serial.println(""); 
+  get_emg();
+  delay(3000);	
+  Serial.flush();
+  }
+  if(readString == "4")
+  {
+  Serial.println(""); 
+  get_gsr();
+  delay(3000);	
+  Serial.flush();
+  }
+  if(readString == "5")
+  {
+  Serial.println(""); 
+  get_ariflow();
+  
+  
+  Serial.flush();
+  }
+  if(readString == "6")
+  {
+   exit(0); 
+  }
+  
 }
 //get body temperature average of 10
 void get_temp()
