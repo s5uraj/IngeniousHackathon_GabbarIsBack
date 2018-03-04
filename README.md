@@ -1,5 +1,31 @@
-# Ingenious_GabbarIsBack
+# Welcome to Ingenious Hackathon
+## GabbarIsBack
 
+## Patient Health Monitoring System
+#
+
+Today in there are lots of people who are not getting proper medical facilities.
+
+Currently medical representative visiting the village area / remote area  and are collecting the data manually.
+
+We are making a ready to go kit which will be used to take the body vitals of the individuals and upload the data to the cloud.
+
+Apart from just taking the body vitals 
+
+- The data stored in the cloud will be used for 
+
+  - the emergency dispatch and response
+
+  - generate Public Health alerts and notifications services
+
+  - create Public Health mapping.
+
+To backend our data we are using the IBM watson cloud with blockchain technology which gives us more security, more privacy integrity and tamper-proofing of data.
+
+
+
+
+## Commit History
 
 commit 1 => Getting Temperature from Device 
 
