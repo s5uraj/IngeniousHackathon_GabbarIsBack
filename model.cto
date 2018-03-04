@@ -10,3 +10,16 @@ asset Body_Vitals identified by testNumber {
     o String quantity
     --> Patient owner
 }
+participant Patient identified by patientId {
+    o String patientId
+    o String firstName
+    o String LastName
+    o String AadharNumber
+    o String Address
+    o String MobileNumber
+    
+}
+transaction Trade {
+    --> Body_Vitals commodity
+    --> Patient newOwner
+}
