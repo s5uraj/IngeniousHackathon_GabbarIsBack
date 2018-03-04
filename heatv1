@@ -33,32 +33,32 @@ void loop() {
   
   if(readString == "1")
   {
-  Serial.print("T:"); 
   get_temp();
+  Serial.println("");
   Serial.flush();
   delay(3000);	
   }
   if(readString == "2")
   {
-  Serial.print("E:"); 
   get_ecg();
+  Serial.println("");
   delay(3000);	
   Serial.flush();
   }
   if(readString == "3")
   {
-  Serial.print("M:"); 
   get_emg();
+  Serial.println("");
   delay(3000);	
   Serial.flush();
   }
-  if(readString == "4")
-  {
-  Serial.print("G:"); 
-  get_gsr();
-  delay(3000);	
-  Serial.flush();
-  }
+//  if(readString == "4")
+//  {
+//  Serial.print("G:"); 
+//  get_gsr();
+//  delay(3000);	
+//  Serial.flush();
+//  }
 //  if(readString == "5")
 //  {
 //  Serial.println(""); 
@@ -77,21 +77,20 @@ void loop() {
 void get_temp()
 {
   float temperature = eHealth.getTemperature();
-  Serial.print("Temperature                  : "); 
+  Serial.print("T:"); 
   Serial.print(temperature);  
 }
 
 void get_ecg()
 {
   float ECG = eHealth.getECG();
-  Serial.print("ECG                          : "); 
+  Serial.print("E:"); 
   Serial.print(ECG, 2); 
 }
 void get_emg()
 {
   int EMG = eHealth.getEMG();
-  
- Serial.print("EMG                           : "); 
+  Serial.print("M:"); 
  Serial.print(EMG);  
 }
 void get_gsr()
