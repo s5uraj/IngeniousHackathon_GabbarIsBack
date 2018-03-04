@@ -6,14 +6,14 @@ String readString;
 void setup() {
   
   Serial.begin(115200);  
-  Serial.println("Menu :");
-  Serial.println("1) Analyze Body Temperature ");
-  Serial.println("2) Get ECG graph ");
-  Serial.println("3) Get EMG graph ");
-  Serial.println("4) Get GSR graph ");
-  Serial.println("5) Get AirFlow ");
-  Serial.println("6) Exit ");
-  
+//  Serial.println("Menu :");
+//  Serial.println("1) Analyze Body Temperature ");
+//  Serial.println("2) Get ECG graph ");
+//  Serial.println("3) Get EMG graph ");
+//  Serial.println("4) Get GSR graph ");
+//  Serial.println("5) Get AirFlow ");
+//  Serial.println("6) Exit ");
+//  
 }
 
 void loop() {
@@ -33,42 +33,40 @@ void loop() {
   
   if(readString == "1")
   {
-  Serial.println(""); 
+  Serial.print("T:"); 
   get_temp();
   Serial.flush();
-  
-  
   delay(3000);	
   }
   if(readString == "2")
   {
-  Serial.println(""); 
+  Serial.print("E:"); 
   get_ecg();
   delay(3000);	
   Serial.flush();
   }
   if(readString == "3")
   {
-  Serial.println(""); 
+  Serial.print("M:"); 
   get_emg();
   delay(3000);	
   Serial.flush();
   }
   if(readString == "4")
   {
-  Serial.println(""); 
+  Serial.print("G:"); 
   get_gsr();
   delay(3000);	
   Serial.flush();
   }
-  if(readString == "5")
-  {
-  Serial.println(""); 
-  get_ariflow();
-  
-  
-  Serial.flush();
-  }
+//  if(readString == "5")
+//  {
+//  Serial.println(""); 
+//  get_ariflow();
+//  
+//  
+//  Serial.flush();
+//  }
   if(readString == "6")
   {
    exit(0); 
